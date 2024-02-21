@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"></script>
+    <script>
+        function addAutoResize() {
+            document.querySelectorAll('[data-autoresize]').forEach(function (element) {
+                element.style.boxSizing = 'border-box';
+                var offset = element.offsetHeight - element.clientHeight;
+                element.addEventListener('input', function (event) {
+                    event.target.style.height = 'auto';
+                    event.target.style.height = event.target.scrollHeight + offset + 'px';
+                });
+                element.removeAttribute('data-autoresize');
+            });
+        }
+    </script>
+    <title>TLDR with Gemini</title>
+</head>
+<body>
+<section class="my-5">
+    <div class="container" style="max-width: 500px">
+        <h3 class="mb-3">TLDR with Gemini</h3>
+
+        <form
+                th:if="${message == null}"
+                id="uploadForm"
+                method="post"
+                th:action="@{/upload}"
+                enctype="multipart/form-data">
+            <input id="input-file" type="file" name="file"/>
+            <button class="btn btn-primary btn-sm float-right" type="submit">
+                Upload
+            </button>
+        </form>
+
+        <div
+                th:if="${message != null}"
+                class="alert alert-secondary alert-dismissible fade show text-center message mt-3"
+                role="alert">
+            [[${message}]]
+            <button type="button" class="close btn-sm" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <a href="/">
+            <button th:if="${message != null}" class="btn btn-primary btn-sm float-left" type="button">Back
+            </button>
+        </a>
+    </div>
+</section>
+</body>
+</html>
