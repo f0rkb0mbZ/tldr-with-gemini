@@ -16,12 +16,6 @@
     <properties>
         <java.version>21</java.version>
     </properties>
-    <repositories>
-        <repository>
-            <id>google</id>
-            <url>https://maven.google.com</url>
-        </repository>
-    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

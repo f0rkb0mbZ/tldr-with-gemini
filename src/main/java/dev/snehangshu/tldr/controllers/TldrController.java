@@ -26,9 +26,10 @@ public class TldrController {
     }
 
     @PostMapping("/upload")
-    public String uploadDocument(Model model, @RequestParam("file") MultipartFile doc) throws IOException {
+    public String uploadDocument(Model model, @RequestParam("file") MultipartFile doc, @RequestParam float creativity, @RequestParam int maxTokens) throws IOException {
         try {
-            String tldr = fileHandlerService.processFile(doc);
+            log.info("Processing file {} with {} creativity and {} maxTokens!", doc.getOriginalFilename(), creativity, maxTokens);
+            String tldr = fileHandlerService.processFile(doc, creativity, maxTokens);
             model.addAttribute("message", tldr);
         } catch (Exception e) {
             model.addAttribute("message", e.getMessage());
