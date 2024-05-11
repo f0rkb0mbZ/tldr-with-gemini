@@ -1,5 +1,5 @@
 # TL;DR with Gemini
-Document Summarizer AI with Gemini
+Document Summarizer AI with Google Gemini
 <img width="1369" alt="image" src="https://github.com/f0rkb0mbZ/tldr-with-gemini/assets/32464867/be2ec1fa-9f35-4cff-a414-9d3e93c71010">
 
 
